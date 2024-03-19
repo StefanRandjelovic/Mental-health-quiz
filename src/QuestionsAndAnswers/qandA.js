@@ -1,7 +1,7 @@
 const QandA_Array = {
   subject: "Mental health",
   numOfQuestions: 3,
-  scorePerCorrectAnswer: 1,
+  scorePerCorrectAnswer: 10,
   questions: [
     {
       question: "Which of the following are real illnesses?",
