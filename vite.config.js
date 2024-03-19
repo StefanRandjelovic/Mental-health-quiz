@@ -9,6 +9,7 @@ export default defineConfig({
       { find: "@QandA", replacement: "/src/QuestionsAndAnswers/" },
       { find: "@styles", replacement: "/src/styles/" },
       { find: "@components", replacement: "/src/components/" },
+      { find: "@helpers", replacement: "/src/helpers/" },
     ],
   },
 });
