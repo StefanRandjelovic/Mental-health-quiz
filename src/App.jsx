@@ -1,7 +1,8 @@
 // COMPONENTS
 import Question from "@components/Question";
 import Answer from "@components/Answer";
-import NawButton from "@components/NavButton";
+import NavButton from "@components/NavButton";
+import Results from "@components/Results";
 
 // ARRAY INFO
 import { QandA_Array } from "@QandA/qandA.js";
@@ -13,18 +14,11 @@ import { useState } from "react";
 import "@styles/App.scss";
 
 function App() {
-  // GETTER FUNCTIONS
-  const getText = () => {
-    if (currentQuestion < questions.length) {
-      return "Next";
-    } else {
-      return "Finish";
-    }
-  };
-
   // STATE VARIABLE
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [userAnswer, setUserAnswer] = useState("");
+  const [highlightenedAnswer, setHighlightenedAnswer] = useState(null);
+  const [showResults, setShowResults] = useState(false);
   const [finalResult, setFinalResult] = useState({
     score: 0,
     correctAnswers: 0,
@@ -36,17 +30,37 @@ function App() {
 
   return (
     <main>
-      <Question
-        cur={currentQuestion}
-        all={questions.length}
-        question={questions[currentQuestion - 1].question}
-      />
-      <Answer
-        choices={questions[currentQuestion - 1].answers}
-        setUserAnswer={setUserAnswer}
-        correct={questions[currentQuestion - 1].correct}
-      />
-      <NawButton setCurrentQuestion={setCurrentQuestion} promp={getText} />
+      {!showResults && (
+        <>
+          <Question
+            cur={currentQuestion}
+            all={questions.length}
+            question={questions[currentQuestion - 1].question}
+          />
+          <Answer
+            choices={questions[currentQuestion - 1].answers}
+            setUserAnswer={setUserAnswer}
+            correct={questions[currentQuestion - 1].correct}
+            highlightenedAnswer={highlightenedAnswer}
+            setHighlightenedAnswer={setHighlightenedAnswer}
+          />
+          <NavButton
+            setCurrentQuestion={setCurrentQuestion}
+            userAnswer={userAnswer}
+            setUserAnswer={setUserAnswer}
+            setFinalResult={setFinalResult}
+            questionsNum={questions.length}
+            current={currentQuestion}
+            setShowResults={setShowResults}
+            setHighlightenedAnswer={setHighlightenedAnswer}
+          />
+        </>
+      )}
+      {showResults && (
+        <>
+          <Results questions={questions} finalResult={finalResult} />
+        </>
+      )}
     </main>
   );
 }
