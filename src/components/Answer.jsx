@@ -1,21 +1,36 @@
 // STYLES
 import "@styles/Answers.scss";
 
-const Answer = ({ choices, setUserAnswer, correct }) => {
+// DEV DEPENDENCIES
+import { useState } from "react";
+
+const Answer = ({
+  choices,
+  setUserAnswer,
+  correct,
+  highlightenedAnswer,
+  setHighlightenedAnswer,
+}) => {
   return (
     <section className="answer">
       <ul>
         {choices.map((choice, index) => (
-          <li
-            onClick={(event) => {
-              if (event.target.innerHTML.slice(3) == correct) {
-                setUserAnswer(true);
-              } else {
-                setUserAnswer(false);
-              }
-            }}
+          <div
             key={crypto.randomUUID()}
-          >{`${index + 1}. ${choice}`}</li>
+            className={highlightenedAnswer === index ? "selected" : null}
+          >
+            <li
+              onClick={(event) => {
+                if (event.target.innerHTML.slice(3) == correct) {
+                  setUserAnswer(true);
+                  setHighlightenedAnswer(index);
+                } else {
+                  setUserAnswer(false);
+                  setHighlightenedAnswer(index);
+                }
+              }}
+            >{`${index + 1}. ${choice}`}</li>
+          </div>
         ))}
       </ul>
     </section>
