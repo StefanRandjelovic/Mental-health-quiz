@@ -1,7 +1,25 @@
 .answer {
   ul {
-    list-style-type: none;
-    li {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    div {
+      list-style-type: none;
+      text-indent: 5px;
+      padding: 1.5px 1px;
+      border-radius: 5px;
+
+      li {
+        background-color: white;
+        border-radius: 5px;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .selected {
+      background-image: linear-gradient(to right, red 30%, orange 70%);
     }
   }
 }
