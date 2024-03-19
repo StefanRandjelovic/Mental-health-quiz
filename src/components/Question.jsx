@@ -1,3 +1,6 @@
+// STYLES
+import "@styles/Questions.scss";
+
 const Question = ({ cur, all, question }) => {
   return (
     <section className="question">
