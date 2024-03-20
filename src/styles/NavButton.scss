@@ -1,6 +1,34 @@
-.navButton {
+// MIXINS
+@mixin buttonComp($x, $y) {
+  width: $y;
   margin-top: 5px;
-  padding: 5px 10px;
-  width: 30%;
   margin-left: auto;
+  border-radius: 13px;
+  padding: 1.5px 2px;
+  transition: all 0.5s ease;
+
+  &:hover {
+    cursor: pointer;
+    background-image: $x;
+  }
+}
+
+@mixin button() {
+  width: 100%;
+  padding: 5px 10px;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.navUnderlayer {
+  @include buttonComp("none", 30%);
+
+  .navButton {
+    @include button();
+  }
 }
