@@ -1,3 +1,6 @@
+// STYLES
+import "@styles/Results.scss";
+
 // HELPER FUNCTIONS
 import { getPercent } from "@helpers/helperFunctions.js";
 
@@ -20,7 +23,11 @@ const Results = ({ questions, finalResult }) => {
       <p>
         Wrong Answers: <span>{finalResult.wrongAnswers}</span>
       </p>
-      <button onClick={() => location.reload()}>Repeat</button>
+      <div className="resUnderlayer">
+        <button className="resButton" onClick={() => location.reload()}>
+          Repeat
+        </button>
+      </div>
     </section>
   );
 };
