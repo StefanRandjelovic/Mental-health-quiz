@@ -1,4 +1,8 @@
+// ARRAY IMPORT
+import { QandA_Array } from "@QandA/qandA";
+
 // GETTER FUNCTIONS
+// NavButton.jsx
 const getText = (currentQuestion, questions) => {
   if (currentQuestion < questions) {
     return "Next";
@@ -7,21 +11,22 @@ const getText = (currentQuestion, questions) => {
   }
 };
 
-const getPercent = (finalResult, questions) => {
-  return `${((finalResult.correctAnswers / questions.length) * 100).toFixed(
-    1
-  )}%`;
+// Results.jsx
+const getPercent = (finalResult) => {
+  return `${((finalResult.correctAnswers / 5) * 100).toFixed(1)}%`;
 };
 
-// HANDLER FUNCTIONS
+// HANDLER FUNCTIONS - NavButton.jsx
 const handleNext = (
   userAnswer,
   setFinalResult,
-  current,
+  counter,
   questionsNum,
   setShowResults,
   setUserAnswer,
-  setCurrentQuestion,setHighlightenedAnswer
+  setCurrentQuestion,
+  setHighlightenedAnswer,
+  setCounter
 ) => {
   if (userAnswer === "") {
     return;
@@ -37,17 +42,27 @@ const handleNext = (
     setFinalResult((prev) => {
       return {
         ...prev,
-        score: prev.score + 10,
+        score: prev.score + QandA_Array.scorePerCorrectAnswer,
         correctAnswers: prev.correctAnswers++,
       };
     });
   }
-  if (current === questionsNum) {
+  if (counter == "05") {
     setShowResults(true);
+    setCurrentQuestion(0);
   }
-  setCurrentQuestion((prev) => prev + 1);
+  setCounter((prev) => prev + 1);
+  setCurrentQuestion(Math.floor(Math.random() * questionsNum));
   setUserAnswer("");
   setHighlightenedAnswer(null);
 };
 
-export { getText, handleNext, getPercent };
+// SHUFFLER FUNCTION - Answer.jsx
+const shuffle = (arr) => {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+};
+
+export { getText, handleNext, getPercent, shuffle };
