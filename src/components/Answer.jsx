@@ -24,7 +24,6 @@ const Answer = ({
     shuffle(newChoices);
     setShuffledChoices(structuredClone(newChoices));
   }, [currentQuestion]);
-  console.log(shuffledChoices);
 
   return (
     <section className="answer">
