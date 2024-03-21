@@ -4,6 +4,7 @@ import App from "./App.jsx";
 
 // STYLES
 import "@styles/global.scss";
+import "@styles/media-queries.scss";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
