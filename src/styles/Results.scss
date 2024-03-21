@@ -1,10 +1,20 @@
 // STYLES
 @import "@styles/NavButton.scss";
 
-.resUnderlayer {
-  @include buttonComp(linear-gradient(to right, red 35%, orange 65%), auto);
-  .resButton {
-    @include button();
-    text-transform: uppercase;
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  .resUnderlayer {
+    @include buttonComp(
+      linear-gradient(to right, red 35%, orange 65%),
+      auto,
+      0px
+    );
+    .resButton {
+      @include button();
+      text-transform: uppercase;
+    }
   }
 }
