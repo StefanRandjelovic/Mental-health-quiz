@@ -11,8 +11,10 @@ const NavButton = ({
   setFinalResult,
   questionsNum,
   current,
+  counter,
   setShowResults,
   setHighlightenedAnswer,
+  setCounter,
 }) => {
   return (
     <div className="navUnderlayer">
@@ -38,12 +40,13 @@ const NavButton = ({
           handleNext(
             userAnswer,
             setFinalResult,
-            current,
+            counter,
             questionsNum,
             setShowResults,
             setUserAnswer,
             setCurrentQuestion,
-            setHighlightenedAnswer
+            setHighlightenedAnswer,
+            setCounter
           )
         }
       >
