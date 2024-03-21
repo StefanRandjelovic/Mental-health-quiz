@@ -1,8 +1,7 @@
 // MIXINS
-@mixin buttonComp($x, $y) {
+@mixin buttonComp($x, $y, $z) {
   width: $y;
-  margin-top: 5px;
-  margin-left: auto;
+  margin-top: $z;
   border-radius: 13px;
   padding: 1.5px 2px;
   transition: all 0.5s ease;
@@ -26,7 +25,8 @@
 }
 
 .navUnderlayer {
-  @include buttonComp("none", 30%);
+  @include buttonComp("none", 30%, 5px);
+  margin-left: auto;
 
   .navButton {
     @include button();
