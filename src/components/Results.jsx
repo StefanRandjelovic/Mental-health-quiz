@@ -9,10 +9,13 @@ const Results = ({ questions, finalResult }) => {
     <section className="results">
       <h1>Results</h1>
       <p>
-        Number of questions:<span>{questions.length}</span>{" "}
+        Number of questions: <span>5</span>{" "}
       </p>
       <p>
-        Total Score: <span>{finalResult.score}</span>
+        Total Score:{" "}
+        <span>
+          {finalResult.score}/50
+        </span>
       </p>
       <p>
         Percentage vise: <span>{getPercent(finalResult, questions)}</span>
